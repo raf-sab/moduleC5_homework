@@ -65,3 +65,11 @@ if (myJSON) {
   // console.log('localStorage JSON saved', myJSON);
   displayResult(JSON.parse(myJSON));
 }
+
+const btnClear = document.querySelector('.clear-storage');
+
+// Полная очистка localStorage
+btnClear.addEventListener('click', () => {
+  localStorage.clear();
+  resultNode.innerHTML = "Тут будет результат...";
+});
