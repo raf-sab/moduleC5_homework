@@ -1,7 +1,7 @@
 const resultNode = document.querySelector('.result');
 const btnNode = document.querySelector('.btn');
-let valuePage = document.querySelector('.input-page');
-let valueLimit = document.querySelector('.input-limit');
+const valuePage = document.querySelector('.input-page');
+const valueLimit = document.querySelector('.input-limit');
 
 // Функция возвращает fetch
 const useRequest = (page, limit) => {
@@ -12,6 +12,9 @@ const useRequest = (page, limit) => {
     })
     .then((data) => {
       localStorage.setItem('myJSON', JSON.stringify(data));
+      localStorage.setItem('myPage', page);
+      localStorage.setItem('myLimit', limit);
+    
       displayResult(data);
     })
     .catch(() => { 
@@ -56,6 +59,8 @@ const myJSON = localStorage.getItem('myJSON');
 if (myJSON) {
   // console.log('localStorage JSON saved', myJSON);
   displayResult(JSON.parse(myJSON));
+  valuePage.value = localStorage.getItem('myPage');
+  valueLimit.value = localStorage.getItem('myLimit');
 }
 
 const btnClear = document.querySelector('.clear-storage');
@@ -64,4 +69,6 @@ const btnClear = document.querySelector('.clear-storage');
 btnClear.addEventListener('click', () => {
   localStorage.clear();
   resultNode.innerHTML = "Тут будет результат...";
+  valuePage.value = null;
+  valueLimit.value = null;
 });
