@@ -32,6 +32,14 @@ function displayResult(apiData) {
     `;
     cards = cards + cardBlock;
   });
+  
+  const btnClear = document.querySelector('.clear-storage');
+
+// Полная очистка localStorage
+btnClear.addEventListener('click', () => {
+  localStorage.clear();
+  resultNode.innerHTML = "Тут будет результат...";
+});
 
   resultNode.innerHTML = cards;
 };
