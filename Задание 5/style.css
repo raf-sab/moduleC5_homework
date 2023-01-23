@@ -64,3 +64,9 @@
 .image {
   width: 100%;
 }
+
+.clear-storage {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
